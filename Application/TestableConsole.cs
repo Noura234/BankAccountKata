@@ -2,11 +2,11 @@
 
 namespace BankAccountKata.Application
 {
-    internal class TestableConsole : ITestableConsole
+    public class TestableConsole : ITestableConsole
     {
-        public void printLine(string v)
+        public void printLine(string valueToPrint)
         {
-            throw new NotImplementedException();
+            Console.WriteLine( valueToPrint);
         }
     }
 }

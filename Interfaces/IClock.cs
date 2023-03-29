@@ -1,6 +1,6 @@
 ﻿namespace BankAccountKata.Interfaces
 {
-    internal interface IClock
+    public interface IClock
     {
         string DateAsString();
     }

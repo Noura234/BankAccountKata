@@ -2,7 +2,7 @@
 
 namespace BankAccountKata.Interfaces
 {
-    internal interface IStatementPrinter
+    public interface IStatementPrinter
     {
         void Print(List<Transaction> allTransactions);
     }

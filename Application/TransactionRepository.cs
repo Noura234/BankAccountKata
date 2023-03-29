@@ -2,7 +2,7 @@
 
 namespace BankAccountKata.Application
 {
-    internal class TransactionRepository : ITransactionRepository
+    public class TransactionRepository : ITransactionRepository
     {
         private IClock clock;
         private List<Transaction> transactions = new();
