@@ -1,6 +1,6 @@
 ﻿using BankAccountKata.Interfaces;
 
-namespace BankAccountKata
+namespace BankAccountKata.Application
 {
     public class Clock : IClock
     {

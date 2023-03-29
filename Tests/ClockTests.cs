@@ -1,4 +1,6 @@
-﻿namespace BankAccountKata.Tests
+﻿using BankAccountKata.Application;
+
+namespace BankAccountKata.Tests
 {
     public  class ClockTests
     {

@@ -1,4 +1,5 @@
-﻿using BankAccountKata.Interfaces;
+﻿using BankAccountKata.Application;
+using BankAccountKata.Interfaces;
 using Moq;
 
 namespace BankAccountKata.Tests

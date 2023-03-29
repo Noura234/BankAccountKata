@@ -1,4 +1,6 @@
-﻿namespace BankAccountKata.Interfaces
+﻿using BankAccountKata.Application;
+
+namespace BankAccountKata.Interfaces
 {
     internal interface IStatementPrinter
     {

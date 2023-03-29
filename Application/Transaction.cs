@@ -1,4 +1,4 @@
-﻿namespace BankAccountKata
+﻿namespace BankAccountKata.Application
 {
     public class Transaction
     {
@@ -13,11 +13,11 @@
 
         public override bool Equals(object? obj)
         {
-            if(this == obj) return true;
-            if(obj == null || this.GetType() !=  obj.GetType()) return false;
-            Transaction that = (Transaction) obj;
-            if(!that.amount.Equals(amount)) return false;
-            if(date != null ? !date.Equals(that.date) : that.date !=null) return false;
+            if (this == obj) return true;
+            if (obj == null || GetType() != obj.GetType()) return false;
+            Transaction that = (Transaction)obj;
+            if (!that.amount.Equals(amount)) return false;
+            if (date != null ? !date.Equals(that.date) : that.date != null) return false;
             return true;
         }
 

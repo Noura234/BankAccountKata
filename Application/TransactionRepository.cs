@@ -1,11 +1,11 @@
 ﻿using BankAccountKata.Interfaces;
 
-namespace BankAccountKata
+namespace BankAccountKata.Application
 {
     internal class TransactionRepository : ITransactionRepository
     {
         private IClock clock;
-        private List<Transaction> transactions = new ();
+        private List<Transaction> transactions = new();
 
         public TransactionRepository(IClock clock)
         {
@@ -25,7 +25,7 @@ namespace BankAccountKata
 
         public void AddDeposit(int amount)
         {
-            var transactionDeposit = new Transaction (clock.DateAsString(), amount);
+            var transactionDeposit = new Transaction(clock.DateAsString(), amount);
             transactions.Add(transactionDeposit);
         }
     }

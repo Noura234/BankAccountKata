@@ -1,6 +1,6 @@
 ﻿using BankAccountKata.Interfaces;
 
-namespace BankAccountKata
+namespace BankAccountKata.Application
 {
     internal class BankAccount
     {
@@ -9,13 +9,13 @@ namespace BankAccountKata
 
         internal BankAccount(ITransactionRepository transactionRepository, IStatementPrinter printStatement)
         {
-            this._transactionRepository = transactionRepository;
+            _transactionRepository = transactionRepository;
             _printStatement = printStatement;
         }
 
         internal void deposit(int amount)
         {
-           _transactionRepository.AddDeposit(amount);
+            _transactionRepository.AddDeposit(amount);
         }
 
         internal void printStatement()
@@ -25,7 +25,7 @@ namespace BankAccountKata
 
         internal void withdraw(int amount)
         {
-           _transactionRepository.WithDraw(amount);
+            _transactionRepository.WithDraw(amount);
         }
     }
 }
