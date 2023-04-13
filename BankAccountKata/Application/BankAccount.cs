@@ -2,7 +2,7 @@
 
 namespace BankAccountKata.Application
 {
-    public class BankAccount
+    public class BankAccount : IBankAccount
     {
         private readonly ITransactionRepository _transactionRepository;
         private readonly IStatementPrinter _printStatement;
@@ -13,19 +13,23 @@ namespace BankAccountKata.Application
             _printStatement = printStatement;
         }
 
-        public void deposit(int amount)
+        public void Deposit(int amount)
         {
-            _transactionRepository.AddDeposit(amount);
+            _transactionRepository.AddDeposit(Math.Abs(amount));
         }
 
-        public void printStatement()
+        public List<Transaction> AllTransactions()
+        {
+            return  _transactionRepository.AllTransactions();
+        }
+        public void PrintStatement()
         {
             _printStatement.Print(_transactionRepository.AllTransactions());
         }
 
-        public void withdraw(int amount)
+        public void WithDraw(int amount)
         {
-            _transactionRepository.WithDraw(amount);
+            _transactionRepository.WithDraw(Math.Abs(amount));
         }
     }
 }

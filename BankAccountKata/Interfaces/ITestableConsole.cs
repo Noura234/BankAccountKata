@@ -2,6 +2,6 @@
 {
     public interface ITestableConsole
     {
-        void printLine(string amount);
+        void PrintLine(string amount);
     }
 }

@@ -22,7 +22,8 @@ namespace BankAccountKata.Tests
             repository.AddDeposit(1000);
             IEnumerable<Transaction> transactions = repository.AllTransactions();
             Assert.Single(transactions);
-            Assert.True(transactions.Single().Equals(new Transaction(TODAY, 1000)));
+            Assert.Equal(TODAY, transactions.Single().Date);
+            Assert.Equal(1000, transactions.Single().Amount);
         }
 
         [Fact]
@@ -32,7 +33,8 @@ namespace BankAccountKata.Tests
             repository.WithDraw(500);
             IEnumerable<Transaction> transactions = repository.AllTransactions();
             Assert.Single(transactions);
-            Assert.True(transactions.Single().Equals(new Transaction(TODAY, -500)));
+            Assert.Equal(TODAY, transactions.Single().Date);
+            Assert.Equal(-500, transactions.Single().Amount);
         }
     }
 }

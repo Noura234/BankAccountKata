@@ -32,4 +32,8 @@
     </AssemblyAttribute>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BankAccountKata\BankAccountKata.csproj" />
+  </ItemGroup>
+
 </Project>

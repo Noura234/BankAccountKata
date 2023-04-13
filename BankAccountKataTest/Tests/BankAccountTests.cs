@@ -19,14 +19,14 @@ namespace BankAccountKata.Tests
         [Fact]
         public void store_deposit_transation()
         {
-            account.deposit(1000);
+            account.Deposit(1000);
             transactionRepository.Verify(tr => tr.AddDeposit(1000), Times.Once);
         }
 
         [Fact]
         public void store_withdraw_transation()
         {
-            account.withdraw(1000);
+            account.WithDraw(1000);
             transactionRepository.Verify(tr => tr.WithDraw(1000), Times.Once);
         }
 
@@ -35,7 +35,7 @@ namespace BankAccountKata.Tests
         {
             var allTransactions = new List<Transaction>() { new Transaction("2012-01-10", 1000) };
             transactionRepository.Setup(x => x.AllTransactions()).Returns(allTransactions);
-            account.printStatement();
+            account.PrintStatement();
             printStatement.Verify(ps => ps.Print(allTransactions), Times.Once);
         }
     }

@@ -14,7 +14,7 @@ namespace BankAccountKata.Application
 
         public void Print(List<Transaction> allTransactions)
         {
-            console.printLine(Statement_Header);
+            console.PrintLine(Statement_Header);
             PrintAllTransactions(allTransactions);
         }
 
@@ -24,18 +24,14 @@ namespace BankAccountKata.Application
             var statementPrint = new List<string>();
             foreach (Transaction transaction in allTransactions)
             {
-                balanceAmount += transaction.Amount();
-                statementPrint.Add(transaction.Date()
-                    + " || "
-                    + transaction.Amount()
-                    + " || "
-                    + balanceAmount.ToString());
+                balanceAmount += transaction.Amount;
+                statementPrint.Add($"{transaction.Date} || {transaction.Amount} || {balanceAmount}");
             }
             if (statementPrint.Any())
             {
                 for (int i = statementPrint.Count() - 1; i >= 0; i--)
                 {
-                    console.printLine(statementPrint[i]);
+                    console.PrintLine(statementPrint[i]);
                 }
             }
         }

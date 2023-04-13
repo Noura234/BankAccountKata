@@ -15,17 +15,16 @@ namespace BankAccountKata.Tests
             var printStatement = new StatementPrinter(consoleMock.Object);
             var bankAccount = new BankAccount(transactionRepository, printStatement);
             mockClock.Setup(x => x.DateAsString()).Returns("2012-01-10");
-            bankAccount.deposit(1000);
+            bankAccount.Deposit(1000);
             mockClock.Setup(x => x.DateAsString()).Returns("2012-01-13");
-            bankAccount.deposit(2000);
+            bankAccount.Deposit(2000);
             mockClock.Setup(x => x.DateAsString()).Returns("2012-01-14");
-            bankAccount.withdraw(500);
-            bankAccount.printStatement();
-            consoleMock.Verify(cm => cm.printLine("Date || Amount || Balance"), Times.Once);
-            consoleMock.Verify(cm => cm.printLine("2012-01-14 || -500 || 2500"), Times.Once);
-            consoleMock.Verify(cm => cm.printLine("2012-01-13 || 2000 || 3000"), Times.Once);
-            consoleMock.Verify(cm => cm.printLine("2012-01-10 || 1000 || 1000"), Times.Once);
-
+            bankAccount.WithDraw(500);
+            bankAccount.PrintStatement();
+            consoleMock.Verify(cm => cm.PrintLine("Date || Amount || Balance"), Times.Once);
+            consoleMock.Verify(cm => cm.PrintLine("2012-01-14 || -500 || 2500"), Times.Once);
+            consoleMock.Verify(cm => cm.PrintLine("2012-01-13 || 2000 || 3000"), Times.Once);
+            consoleMock.Verify(cm => cm.PrintLine("2012-01-10 || 1000 || 1000"), Times.Once);
         }
     }
 }
