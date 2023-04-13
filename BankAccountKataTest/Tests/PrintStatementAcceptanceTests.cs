@@ -7,18 +7,18 @@ namespace BankAccountKata.Tests
     public class PrintStatementAcceptanceTests
     {
         [Fact]
-        public void Print_Statement_Contains_All_Transactions()
+        public void print_Statement_Contains_All_Transactions()
         {
             var mockClock = new Mock<IClock>();            
             var transactionRepository = new TransactionRepository(mockClock.Object);
-            var consoleMock = new Mock<ITestableConsole>();
+            var consoleMock = new Mock<IConsolePrinter>();
             var printStatement = new StatementPrinter(consoleMock.Object);
             var bankAccount = new BankAccount(transactionRepository, printStatement);
-            mockClock.Setup(x => x.DateAsString()).Returns("2012-01-10");
+            mockClock.Setup(x => x.TodayAsString()).Returns("2012-01-10");
             bankAccount.Deposit(1000);
-            mockClock.Setup(x => x.DateAsString()).Returns("2012-01-13");
+            mockClock.Setup(x => x.TodayAsString()).Returns("2012-01-13");
             bankAccount.Deposit(2000);
-            mockClock.Setup(x => x.DateAsString()).Returns("2012-01-14");
+            mockClock.Setup(x => x.TodayAsString()).Returns("2012-01-14");
             bankAccount.WithDraw(500);
             bankAccount.PrintStatement();
             consoleMock.Verify(cm => cm.PrintLine("Date || Amount || Balance"), Times.Once);

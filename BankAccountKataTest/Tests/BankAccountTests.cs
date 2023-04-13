@@ -6,37 +6,37 @@ namespace BankAccountKata.Tests
 {
     public class BankAccountTests
     {
-        private readonly Mock<ITransactionRepository> transactionRepository;
-        private readonly BankAccount account;
-        private readonly Mock<IStatementPrinter> printStatement;
+        private readonly Mock<ITransactionRepository> _transactionRepository;
+        private readonly BankAccount _account;
+        private readonly Mock<IStatementPrinter> _printStatement;
 
         public BankAccountTests()
         {
-            transactionRepository = new Mock<ITransactionRepository>();
-            printStatement = new Mock<IStatementPrinter>();
-            account = new BankAccount(transactionRepository.Object, printStatement.Object);
+            _transactionRepository = new Mock<ITransactionRepository>();
+            _printStatement = new Mock<IStatementPrinter>();
+            _account = new BankAccount(_transactionRepository.Object, _printStatement.Object);
         }
         [Fact]
-        public void store_deposit_transation()
+        public void store_Deposit_Transaction()
         {
-            account.Deposit(1000);
-            transactionRepository.Verify(tr => tr.AddDeposit(1000), Times.Once);
+            _account.Deposit(1000);
+            _transactionRepository.Verify(tr => tr.AddDeposit(1000), Times.Once);
         }
 
         [Fact]
-        public void store_withdraw_transation()
+        public void store_Withdraw_Transaction()
         {
-            account.WithDraw(1000);
-            transactionRepository.Verify(tr => tr.WithDraw(1000), Times.Once);
+            _account.WithDraw(1000);
+            _transactionRepository.Verify(tr => tr.WithDraw(1000), Times.Once);
         }
 
         [Fact]
-        public void print_statement()
+        public void print_Statement()
         {
             var allTransactions = new List<Transaction>() { new Transaction("2012-01-10", 1000) };
-            transactionRepository.Setup(x => x.AllTransactions()).Returns(allTransactions);
-            account.PrintStatement();
-            printStatement.Verify(ps => ps.Print(allTransactions), Times.Once);
+            _transactionRepository.Setup(x => x.AllTransactions()).Returns(allTransactions);
+            _account.PrintStatement();
+            _printStatement.Verify(ps => ps.Print(allTransactions), Times.Once);
         }
     }
 }

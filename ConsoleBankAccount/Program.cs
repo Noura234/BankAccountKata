@@ -8,8 +8,8 @@ namespace ConsoleBankAccount
         {
             var clock = new Clock();
             var transactionRepository = new TransactionRepository(clock);
-            var consoleMock = new TestableConsole();
-            var printStatement = new StatementPrinter(consoleMock);
+            var console = new ConsolePrinter();
+            var printStatement = new StatementPrinter(console);
             var bankAccount = new BankAccount(transactionRepository, printStatement);
             bankAccount.Deposit(1000);
             bankAccount.Deposit(2000);

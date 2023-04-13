@@ -19,7 +19,7 @@ namespace BankAccountWebApi
             builder.Services.AddSingleton<IBankAccount, BankAccount>();
             builder.Services.AddSingleton<IClock, Clock>();
             builder.Services.AddSingleton<IStatementPrinter, StatementPrinter>();
-            builder.Services.AddSingleton<ITestableConsole, TestableConsole>();
+            builder.Services.AddSingleton<IConsolePrinter, ConsolePrinter>();
             builder.Services.AddSingleton<ITransactionRepository, TransactionRepository>();
 
             var app = builder.Build();

@@ -16,7 +16,7 @@ namespace BankAccountWebApi.Controllers
             _bankAccountService = bankAccountService;
         }
 
-        [HttpPost, Route("Deposit/{amount:int}")]
+        [HttpPost, Route("deposit/{amount:int}")]
         public IActionResult Deposit(int amount)
         {
             try
@@ -30,7 +30,7 @@ namespace BankAccountWebApi.Controllers
             }
         }
 
-        [HttpPost, Route("WithDraw/{amount:int}")]
+        [HttpPost, Route("withdraw/{amount:int}")]
         public IActionResult WithDraw(int amount)
         {
             try

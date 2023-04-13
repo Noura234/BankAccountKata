@@ -6,34 +6,34 @@ namespace BankAccountKata.Tests
 {
     public class TransactionRepositoryTests
     {
-        private const string TODAY = "2012-01-14";
-        private readonly TransactionRepository repository;
-        private readonly Mock<IClock> clockMock;
+        private const string _today = "2012-01-14";
+        private readonly TransactionRepository _transactionRepository;
+        private readonly Mock<IClock> _clockMock;
 
         public TransactionRepositoryTests()
         {
-            clockMock = new Mock<IClock>();
-            repository = new TransactionRepository(clockMock.Object);
+            _clockMock = new Mock<IClock>();
+            _transactionRepository = new TransactionRepository(_clockMock.Object);
         }
         [Fact]
-        public void create_and_store_deposit_transaction()
+        public void create_And_Store_Deposit_Transaction()
         {
-            clockMock.Setup(x => x.DateAsString()).Returns(TODAY);
-            repository.AddDeposit(1000);
-            IEnumerable<Transaction> transactions = repository.AllTransactions();
+            _clockMock.Setup(x => x.TodayAsString()).Returns(_today);
+            _transactionRepository.AddDeposit(1000);
+            IEnumerable<Transaction> transactions = _transactionRepository.AllTransactions();
             Assert.Single(transactions);
-            Assert.Equal(TODAY, transactions.Single().Date);
+            Assert.Equal(_today, transactions.Single().Date);
             Assert.Equal(1000, transactions.Single().Amount);
         }
 
         [Fact]
-        public void create_and_store_withdraw_transaction()
+        public void create_And_Store_WithDraw_Transaction()
         {
-            clockMock.Setup(x => x.DateAsString()).Returns(TODAY);
-            repository.WithDraw(500);
-            IEnumerable<Transaction> transactions = repository.AllTransactions();
+            _clockMock.Setup(x => x.TodayAsString()).Returns(_today);
+            _transactionRepository.WithDraw(500);
+            IEnumerable<Transaction> transactions = _transactionRepository.AllTransactions();
             Assert.Single(transactions);
-            Assert.Equal(TODAY, transactions.Single().Date);
+            Assert.Equal(_today, transactions.Single().Date);
             Assert.Equal(-500, transactions.Single().Amount);
         }
     }

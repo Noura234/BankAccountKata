@@ -4,17 +4,17 @@ namespace BankAccountKata.Application
 {
     public class StatementPrinter : IStatementPrinter
     {
-        private const string Statement_Header = "Date || Amount || Balance";
-        private readonly ITestableConsole console;
+        private const string _statementHeader = "Date || Amount || Balance";
+        private readonly IConsolePrinter _console;
 
-        public StatementPrinter(ITestableConsole console)
+        public StatementPrinter(IConsolePrinter console)
         {
-            this.console = console;
+            this._console = console;
         }
 
         public void Print(List<Transaction> allTransactions)
         {
-            console.PrintLine(Statement_Header);
+            _console.PrintLine(_statementHeader);
             PrintAllTransactions(allTransactions);
         }
 
@@ -31,7 +31,7 @@ namespace BankAccountKata.Application
             {
                 for (int i = statementPrint.Count() - 1; i >= 0; i--)
                 {
-                    console.PrintLine(statementPrint[i]);
+                    _console.PrintLine(statementPrint[i]);
                 }
             }
         }

@@ -8,7 +8,7 @@ namespace BankAccountKata.Application
         {
         }
 
-        public string DateAsString()
+        public string TodayAsString()
         {
             return Today().ToString("yyyy-MM-dd");
         }

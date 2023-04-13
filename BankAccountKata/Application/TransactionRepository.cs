@@ -4,29 +4,29 @@ namespace BankAccountKata.Application
 {
     public class TransactionRepository : ITransactionRepository
     {
-        private IClock clock;
-        private List<Transaction> transactions = new();
+        private IClock _clock;
+        private List<Transaction> _transactions = new();
 
         public TransactionRepository(IClock clock)
         {
-            this.clock = clock;
+            this._clock = clock;
         }
 
         public List<Transaction> AllTransactions()
         {
-            return transactions;
+            return _transactions;
         }
 
         public void WithDraw(int amount)
         {
-            var transactionWithDraw = new Transaction(clock.DateAsString(), -amount);
-            transactions.Add(transactionWithDraw);
+            var transactionWithDraw = new Transaction(_clock.TodayAsString(), -amount);
+            _transactions.Add(transactionWithDraw);
         }
 
         public void AddDeposit(int amount)
         {
-            var transactionDeposit = new Transaction(clock.DateAsString(), amount);
-            transactions.Add(transactionDeposit);
+            var transactionDeposit = new Transaction(_clock.TodayAsString(), amount);
+            _transactions.Add(transactionDeposit);
         }
     }
 }

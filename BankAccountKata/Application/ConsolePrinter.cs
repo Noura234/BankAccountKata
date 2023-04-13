@@ -2,7 +2,7 @@
 
 namespace BankAccountKata.Application
 {
-    public class TestableConsole : ITestableConsole
+    public class ConsolePrinter : IConsolePrinter
     {
         public void PrintLine(string valueToPrint)
         {

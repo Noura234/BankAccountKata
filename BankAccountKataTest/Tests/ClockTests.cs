@@ -4,14 +4,14 @@ namespace BankAccountKata.Tests
 {
     public  class ClockTests
     {
-        private const string TODAY = "2012-01-10";
+        private const string _today = "2012-01-10";
 
         [Fact]
-        public void return_date_in_dd_mm_yy_format()
+        public void return_Date_In_Dd_Mm_Yy_Format()
         {
             var clock = new TestableClock();
-            var today = clock.DateAsString();
-            Assert.Equal(TODAY, today);
+            var today = clock.TodayAsString();
+            Assert.Equal(_today, today);
 
         }
 
